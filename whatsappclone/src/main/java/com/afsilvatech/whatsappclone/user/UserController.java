@@ -4,9 +4,8 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.http.HttpStatus;
 
 import java.util.List;
 
@@ -22,4 +21,16 @@ public class UserController {
     public ResponseEntity<List<UserResponse>> getAllUsers(Authentication authentication) {
         return ResponseEntity.ok(userService.finAllUsersExceptSelf(authentication));
     }
+
+   @PostMapping("/{userId}/favorite-chats")
+   public ResponseEntity<Void> favoriteChat(
+           Authentication authentication,
+           @PathVariable String userId,
+           @RequestParam(name = "chat-id") String chatId) {
+       if (!authentication.getName().equals(userService.findUserById(userId).getEmail())) {
+           return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+       }
+       userService.favoriteChat(authentication, chatId);
+       return ResponseEntity.noContent().build();
+   }
 }
