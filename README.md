@@ -22,7 +22,6 @@
 - [Configuração](#-configuração)
 - [Estrutura do Projeto](#-estrutura-do-projeto)
 - [Roadmap / Melhorias Futuras](#-roadmap--melhorias-futuras)
-- [Licença](#-licença)
 
 ---
 
@@ -155,13 +154,6 @@ whatsapp-clone/
 - 💬 Suporte a grupos e mensagens em massa  
 - 🧩 Microsserviços e mensageria (Kafka / RabbitMQ)  
 - 📈 Monitoramento com Prometheus + Grafana  
-
----
-
-## 📜 Licença
-
-Distribuído sob a licença **Apache 2.0**.  
-Consulte o arquivo [LICENSE](./LICENSE) para mais informações.
 
 ---
 
